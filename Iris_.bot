@@ -1,0 +1,61 @@
+{
+  "name": "Iris_",
+  "padlock": "PVXGN8F2ju9AQTds9c3H/Q==!cuM98R/goFw1wezdmE6SOf0zMDPLWYyxBnq/HLUTaDXTsvgmIzJ1JaRfO67zSF1y",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "5ccf33ec-aa53-4aad-83bc-e85a67f57bc2",
+      "subscriptionId": "7c562335-8d10-415c-b1eb-5097c7986512",
+      "resourceGroup": "hackohio",
+      "serviceName": "Iris_",
+      "type": "abs",
+      "name": "Iris_",
+      "id": "1"
+    },
+    {
+      "connectionString": "bGGIQqbvT3j1B5aQRroycw==!TdUmeIvNwFD2IyoiFvh8Vs8WqhuKnHO+zkOnXs+4pJZwJOi3TX0bCDCR44sia9vOVphPOigASOxtr8XRgxRWGk3gINOPTLmegyPjJGBhFYdHNFtEHsaXNvF3kYol3F2xxNR3F6TFrjY2xQclOvDJ9RFTp/8zFLxLULHVGu1g9a60piGXKtQIZJThciOqSdl2czOnuSVcbT4wjh4mhKHaEQ==",
+      "tenantId": "5ccf33ec-aa53-4aad-83bc-e85a67f57bc2",
+      "subscriptionId": "7c562335-8d10-415c-b1eb-5097c7986512",
+      "resourceGroup": "hackohio",
+      "serviceName": "irisb851",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "58098909-c7ba-4b23-9e2b-1d58d5e516b5",
+      "appPassword": "7IT/bVNG7J2INAX5a59EKw==!7wF4xDdqf1jEHZ8hLUeIffT/lHtY11LGlh0IMctZ+U8=",
+      "endpoint": "https://iris-b851.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    },
+    {
+      "instrumentationKey": "bJjKYWrrG6QPrVG1+lUssA==!juuJsio3zyzbvpv7Bl5h6Ot6HLgjD/xm1SMBOUlOPDkBHSlKbzAG21TASbzxWPPh",
+      "applicationId": "96dee710-b8df-4259-b7a0-b8ffba34f778",
+      "apiKeys": {},
+      "tenantId": "5ccf33ec-aa53-4aad-83bc-e85a67f57bc2",
+      "subscriptionId": "7c562335-8d10-415c-b1eb-5097c7986512",
+      "resourceGroup": "hackohio",
+      "serviceName": "Iris_d4awia",
+      "type": "appInsights",
+      "id": "5"
+    },
+    {
+      "appId": "19e731aa-d95d-4cd5-91cc-30862aa677a3",
+      "authoringKey": "VlWWxZqzkmnAJM1WYU+Cbw==!feWW51NMNAZrzjWlIjPJsj/Z4HgZJwJ94/AFclNGVNWDRndXE5cr93Ub3oDL2sgL",
+      "version": "0.1",
+      "region": "westus",
+      "type": "luis",
+      "name": "BasicBotLuisApplication",
+      "id": "6"
+    }
+  ]
+}
