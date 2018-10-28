@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 /**
  * Simple user profile class.
  */
@@ -7,4 +10,5 @@ class UserProfile {
         this.city = city || undefined;
     }
 };
+
 exports.UserProfile = UserProfile;
