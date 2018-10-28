@@ -8,9 +8,7 @@ const { ActivityTypes, CardFactory } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
 
-const { UserProfile } = require('./dialogs/greeting/userProfile');
 const { WelcomeCard } = require('./dialogs/welcome');
-const { GreetingDialog } = require('./dialogs/greeting');
 
 // Greeting Dialog ID
 const GREETING_DIALOG = 'greetingDialog';
@@ -69,6 +67,7 @@ class BasicBot {
         });
 
         // Create the property accessors for user and conversation state
+        this.assignmentAccessor = userState.createProperty('assignmentProperty');
         this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
         this.dialogState = conversationState.createProperty(DIALOG_STATE_PROPERTY);
 
