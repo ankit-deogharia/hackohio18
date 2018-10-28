@@ -22,10 +22,17 @@ class ShowAssignment extends ComponentDialog {
         return await step.endDialog();
       } else {
         let output = '';
-        for (var key in userProfile.dueDates) {
-          output += '\n' + key + ' due on ' + userProfile.dueDates[key];
-        }
-        await step.context.sendActivity('Here is a list of the things you have due: ' + output);
+        userProfile.dueDates.sort(function(a, b){
+            var keyA = a.priority,
+                keyB = b.priority;
+            // Compare the 2 dates
+            if(keyA < keyB) return 1;
+            if(keyA > keyB) return -1;
+            return 0;
+        }).forEach(function(x) {
+            output += '\n' + key + ' due on ' + userProfile.dueDates[key];
+        })
+        await step.context.sendActivity('Here is a list of the things you have due by priority: ' + output);
         return await step.endDialog();
       }
     }

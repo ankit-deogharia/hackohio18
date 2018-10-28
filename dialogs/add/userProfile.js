@@ -9,6 +9,7 @@ class UserProfile {
         this.name = name || undefined;
         this.assignmentList = [];
         this.dueDates = {};
+        this.priority = 0;
     }
 };
 

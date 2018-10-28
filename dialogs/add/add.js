@@ -61,15 +61,39 @@ class AddAssignment extends ComponentDialog {
     async promptForDueDate(step) {
       let assignmentName = step.result;
       this.assignmentName = assignmentName;
-      return await step.prompt(DUE_DATE_PROMPT, 'When is it due?')
+      return await step.prompt(DUE_DATE_PROMPT, 'How long from now is this due?')
     }
+
+
     async finish(step) {
+        // function getNewDate(str) {
+        //   let current = Date.now();
+        //   dueDate = dueDate.trim();
+        //   let nums = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9};
+        //   let numword = dueDate.substring(0, dueDate.indexOf(' '));
+        //   let num = parseInt(numword);
+        //   if (isNaN(num)) {
+        //     if (nums.hasOwnProperty(numword)) {
+        //       num = nums[numword];
+        //     }
+        //   }
+        //   let dayword = dueDate.substring(dueDate.indexOf(' ') + 1, dueDate.length);
+        //   if dayword.toLowerCase().includes('week') {
+        //     num *= 7;
+        //   }
+        //   return Date.now() + num;
+        // }
         const profile = await this.userProfileAccessor.get(step.context);
-        console.log(profile);
         let dueDate = step.result;
         profile.assignmentList.push(this.assignmentName);
         profile.dueDates[this.assignmentName] = dueDate;
-        step.context.sendActivity('Awesome! I updated your assignment list with: ' + this.assignmentName);
+        // let priorities = {'exam': 3, 'project': 2, 'homework': 1};
+        // for (var key in priorities) {
+        //   if (this.assignmentName.toLowerCase().includes(key)) {
+        //     profile.priority = priorities[key];
+        //   }
+        // }
+        step.context.sendActivity('Awesome! I updated your assignment list with: ' + this.assignmentName + ' due on ' + profile.dueDates[this.assignmentName]);
         return await step.endDialog();
     }
 
