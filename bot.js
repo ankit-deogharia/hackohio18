@@ -8,10 +8,19 @@ const { ActivityTypes, CardFactory } = require('botbuilder');
 const { LuisRecognizer } = require('botbuilder-ai');
 const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
 
+const { UserProfile } = require('./dialogs/greeting/userProfile');
 const { WelcomeCard } = require('./dialogs/welcome');
+const { GreetingDialog } = require('./dialogs/greeting');
+const { AddAssignment } = require('./dialogs/add');
+const { ShowAssignment } = require('./dialogs/show');
+const { CompleteAssignment } = require('./dialogs/complete');
 
 // Greeting Dialog ID
+const ADD_ASSIGNMENT_DIALOG = 'addAssignment';
 const GREETING_DIALOG = 'greetingDialog';
+const ADD_DIALOG = 'addDialog';
+const SHOW_ASSIGNMENT_DIALOG = 'showAssignment';
+const COMPLETE_ASSIGNMENT_DIALOG = 'completeAssignment';
 
 // State Accessor Properties
 const DIALOG_STATE_PROPERTY = 'dialogState';
@@ -21,6 +30,9 @@ const USER_PROFILE_PROPERTY = 'userProfileProperty';
 const LUIS_CONFIGURATION = 'BasicBotLuisApplication';
 
 // Supported LUIS Intents.
+const ADD_ASSIGNMENT_INTENT = 'Add';
+const SHOW_ASSIGNMENT_INTENT = 'Show';
+const COMPLETE_ASSIGNMENT_INTENT = 'Complete';
 const GREETING_INTENT = 'Greeting';
 const CANCEL_INTENT = 'Cancel';
 const HELP_INTENT = 'Help';
@@ -67,7 +79,6 @@ class BasicBot {
         });
 
         // Create the property accessors for user and conversation state
-        this.assignmentAccessor = userState.createProperty('assignmentProperty');
         this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
         this.dialogState = conversationState.createProperty(DIALOG_STATE_PROPERTY);
 
@@ -75,6 +86,10 @@ class BasicBot {
         this.dialogs = new DialogSet(this.dialogState);
         // Add the Greeting dialog to the set
         this.dialogs.add(new GreetingDialog(GREETING_DIALOG, this.userProfileAccessor));
+
+        this.dialogs.add(new CompleteAssignment(COMPLETE_ASSIGNMENT_DIALOG, this.userProfileAccessor));
+        this.dialogs.add(new AddAssignment(ADD_ASSIGNMENT_DIALOG, this.userProfileAccessor));
+        this.dialogs.add(new ShowAssignment(SHOW_ASSIGNMENT_DIALOG, this.userProfileAccessor));
 
         this.conversationState = conversationState;
         this.userState = userState;
@@ -127,7 +142,17 @@ class BasicBot {
                 // dc.continueDialog() returns DialogTurnStatus.empty if there are no active dialogs
                 case DialogTurnStatus.empty:
                     // Determine what we should do based on the top intent from LUIS.
+                    console.log(topIntent);
                     switch (topIntent) {
+                    case ADD_ASSIGNMENT_INTENT:
+                        await dc.beginDialog(ADD_ASSIGNMENT_DIALOG);
+                        break;
+                    case SHOW_ASSIGNMENT_INTENT:
+                        await dc.beginDialog(SHOW_ASSIGNMENT_DIALOG);
+                        break;
+                    case COMPLETE_ASSIGNMENT_INTENT:
+                        await dc.beginDialog(COMPLETE_ASSIGNMENT_DIALOG);
+                        break;
                     case GREETING_INTENT:
                         await dc.beginDialog(GREETING_DIALOG);
                         break;

@@ -4,11 +4,12 @@
 /**
  * Simple user profile class.
  */
-class Assignment {
-    constructor(name, dueDate) {
+class UserProfile {
+    constructor(name) {
         this.name = name || undefined;
-        this.dueDate = dueDate || undefined;
+        this.assignmentList = [];
+        this.dueDates = {};
     }
 };
 
-exports.Assignment = Assignment;
+exports.UserProfile = UserProfile;
