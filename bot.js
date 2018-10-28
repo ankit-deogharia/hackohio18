@@ -156,6 +156,14 @@ class BasicBot {
                     case GREETING_INTENT:
                         await dc.beginDialog(GREETING_DIALOG);
                         break;
+                    case HELP_INTENT:
+                        await dc.context.sendActivity(`Let me try to provide some help.`);
+                        await dc.context.sendActivity(`
+                          In order to ADD an assignment say something like: I have homework
+                          GREETING: Hello
+                          To COMPLETE: I finished my assignment
+                          To SHOW: Show my assignments`);
+                        break;
                     case NONE_INTENT:
                     default:
                         // None or no intent identified, either way, let's provide some help
@@ -224,7 +232,11 @@ class BasicBot {
 
         if (topIntent === HELP_INTENT) {
             await dc.context.sendActivity(`Let me try to provide some help.`);
-            await dc.context.sendActivity(`I understand greetings, being asked for help, or being asked to cancel what I am doing.`);
+            await dc.context.sendActivity(`
+              In order to ADD an assignment say something like: I have homework
+              GREETING: Hello
+              To COMPLETE: I finished my assignment
+              To SHOW: Show my assignments`);
             return true; // this is an interruption
         }
         return false; // this is not an interruption
